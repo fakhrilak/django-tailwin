@@ -1,0 +1,38 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>ODI SOSMED ANALITICS</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-green-500 w-full">
+    <div class="w-11/12 m-auto mt-10">
+         <a href="/"><h1 class="text-center text-white text-base lg:text-2xl underline">WELCOME ODI SOSIAL MEDIA ANALYTICS</h1></a>
+         <div class="mt-20 w-11/12 m-auto bg-green-700 pt-5 pb-5 rounded">
+             <div class="grid grid-cols-2 lg:grid-cols-4 w-11/12 m-auto gap-2">
+                 {% for route,path,name in data%}
+                    <a href={{route}}>
+                        <div class="text-center" href={{route}}>
+                            <img src={{path}} class="w-20 lg:w-44 rounded m-auto">
+                            <p class="pt-4 text-white">{{name}}</p>
+                        </div>
+                    </a>
+                 {% endfor %}
+             </div>
+         </div>
+         <div
+         class="w-6/12 mt-36"
+         >
+            <p class="text-white">Powered by <img src="https://1000marcas.net/wp-content/uploads/2021/06/Django-Logo-500x313.png"
+            class="w-20"
+            ></p>
+            
+         </div>
+    </div>
+</body>
+</html>
