@@ -1,0 +1,53 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>DETAIL POST</title>
+    {% tailwind_css %}
+</head>
+<body class="w-full bg-green-600 mt-10">
+    <div class="w-11/12 m-auto">
+        <h1 class="text-center font-serif font-bold text-xl underline">DETAIL POST ID : {{id}}</h1>
+    </div>
+    <div class="w-11/12 m-auto flex mt-10">
+        <div class="w-2/12 bg-white ml-2 mr-2 rounded font-bold text-xl text-center">
+            <p class="text-center">{{commandCount}}</p>
+            <p>LIKES</p>
+        </div>
+        <div class="w-2/12 bg-white ml-2 mr-2 rounded font-bold text-xl text-center">
+            <p>{{likeCount}}</p>
+            <p>COMMANDS</p>
+        </div>
+    </div>
+    <div class="w-11/12 m-auto bg-white mt-2 rounded text-center">
+         <p>{{token}}</p>
+    </div>
+    <img src={{pict}}/>
+    <div class="w-11/12 m-auto bg-white mt-2 rounded">
+        <h1 class="pl-2 pr-2">{{captions}}</h1>
+    </div>
+    <div class="w-11/12 m-auto bg-white mt-2 rounded">
+        {% for i in detailCommand %}
+        <h1 class="pl-2 pr-2">{{i.node}}</h1>
+        {% endfor %}
+    </div>
+    <div class="w-11/12 m-auto bg-white mt-2 rounded">
+        {% for i in detailCommand %}
+            <div class="w-full mt-2 bg-green-800 rounded">
+                <div class="w-11/12 mt-2 mb-2">
+                    <p class="pl-2 pr-2 text-white">@{{i.node.owner.username}}</p>
+                </div>
+                
+                <h1 class="pl-2 pr-2 text-white">{{i.node.text}}</h1>
+                <div class="w-11/12 mt-2 mb-2">
+                    <p class="pl-2 pr-2 text-white">like {{i.node.edge_threaded_comments.count}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>TRANDING</title>
+    {% tailwind_css %}
+</head>
+<body class="w-11/12 bg-green-700 m-auto">
+    <div class="w-11/12 m-auto mt-10">
+        <h1 class="text-center font-serif font text-2xl text-white">TRANDING IN THE WORLD</h1>
+    </div>
+    <div class="mt-2 w-3/12 rounded bg-white border-2 border-white text-black">
+        <form method="POST">
+            {% csrf_token %}
+            <table class="">
+               {{country_form}} 
+            </table>
+            <br>
+            <button type="submit"
+            class="w-full h-10 bg-green-700 mt-2 rounded text-white font-bold"
+            >Submit</button>
+        </form>
+    </div>
+    <div class="w-10/12  m-auto mt-10 grid grid-cols-4 gap-2">
+            {% for i in country%}
+                {% for y in i.trends%}
+                <div class="m-auto bg-white w-full rounded text-center overflow-hidden">
+                        <p>{{y.name}}</p>
+                        <p>{{y.tweet_volume}}</p>
+                </div>
+                {% endfor %}
+            {% endfor %}
+    </div>
+    <div class="w-10/12  m-auto mt-10 grid grid-cols-6 gap-2">
+            {% for i in tranding%}
+             <div class="m-auto bg-white w-full rounded text-center">
+                <p>{{i.name}}</p>
+             </div>
+            {% endfor %}
+    </div>
+</body>
+</html>

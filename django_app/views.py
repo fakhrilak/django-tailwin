@@ -8,3 +8,4 @@ def docs(request):
         ["/twitter/","https://cdn-icons-png.flaticon.com/512/124/124021.png","TWITTER"]
     ]}
     return render(request,"Index.html",context)
+

@@ -13,12 +13,11 @@
 <body class="bg-green-500 w-full">
     <div class="w-11/12 m-auto mt-10">
          <a href="/"><h1 class="text-center text-white text-2xl underline">INSTAGRAM</h1></a>
-
          <diV class="pt-10 w-10/12 m-auto">
             {% for i in instagram%}
-                <diV class="w-44 bg-green-700 rounded mt-2">
+                <a href="{{i.route}}"><div class="w-44 bg-green-700 rounded mt-2">
                      <p class="text-white text-center">{{i.name}}</p>
-                </diV>
+                </div></a>
                 <div class="w-11/12 m-auto bg-white mt-2 rounded">
                     {% for ket,value in i.value%}
                         <ul class="pt-2 w-full w-11/12 m-auto pb-2">

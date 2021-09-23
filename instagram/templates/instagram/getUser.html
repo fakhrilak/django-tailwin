@@ -1,0 +1,49 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>USER INSTAGRAM</title>
+    {% tailwind_css %}
+</head>
+<body  class="bg-green-500 w-full">
+    <div class="w-11/12 m-auto mt-10">
+        <a href="/instagram/"><h1 class="text-center text-2xl text-bolder font-bold">USER INSTAGRAM</h1></a>
+        <div class="mt-2 w-3/12 rounded bg-white">
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                   {{user.as_table}} 
+                </table>
+                <br>
+                <button type="submit"
+                class="w-full h-10 bg-green-700 mt-2 rounded text-white font-bold"
+                >Submit</button>
+            </form>
+        </div>
+        
+    </div>
+    <div class="w-10/12 m-auto">
+        <div class="bg-white mt-10 rounded">
+            <p class="ml-2">User ID  = {{userId}}</p>
+        </div>
+        <div class="bg-white mt-10 rounded">
+            <p class="ml-2 font-sm overflow-hidden">Token  = {{pageInfo.end_cursor}}</p>
+        </div>
+        <div class="w-full gap-2 grid grid-cols-6 mt-4">
+            {% for i in postCode %}
+            <a href="/instagram/{{i.postcode}}/"><div class="bg-white rounded">
+                <img src={{i.thumbnail}} class="w-full">
+                <p class="text-center">{{i.postcode}}</p>
+                <p class="text-center">Command = {{i.commandCount}}</p>
+                <p class="text-center">like = {{i.like}}</p>
+            </div></a>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
